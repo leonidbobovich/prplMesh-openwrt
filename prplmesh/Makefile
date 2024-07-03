@@ -8,13 +8,31 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=prplmesh
-PKG_RELEASE:=1
+PKG_VERSION:=4.2.2
+PKG_RELEASE:=2
+PKG_BASE_NAME:=prplmesh
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/prplfoundation/prplMesh.git
-PKG_SOURCE_DATE:=2018-12-18
-PKG_SOURCE_VERSION:=56f2c3531066e461be8911b488b54193fb6b88e0
-PKG_MIRROR_HASH:=d200bf556842b0c91da53ec3a514f8c80c39e7e9b6b7f8c72bbef0275252c233
+#PKG_SOURCE_URL:=https://github.com/prplfoundation/prplMesh.git
+#PKG_SOURCE_URL:=https://gitlab.com/prpl-foundation/prplmesh/prplMesh.git
+#PKG_SOURCE_URL:=https://gitlab.com/prpl-foundation/prplmesh/prplMesh.git
+#PKG_SOURCE_URL:=file:///home/ubuntu/prplMesh/
+
+#PKG_SOURCE_URL:=/home/ubuntu/prplMesh/.git
+#PKG_SOURCE_VERSION:=44ba9c5f5f644a6dba226c3738390c356745f042
+
+#PKG_SOURCE_URL:=/home/ubuntu/prplMesh.leonid/.git
+#PKG_SOURCE_VERSION:=d7f8039a666423fcda3cb690d8c7d1e0668b852c
+PKG_SOURCE_URL:=/home/ubuntu/prplMesh/.git
+PKG_SOURCE_VERSION:=27a53e40d24f7ba6f3c9b6841e0c3de34594e4c4
+
+#PKG_SOURCE_DATE:=2024-02-21
+#PKG_SOURCE_VERSION:=
+#PKG_MIRROR_HASH:=
+#PKG_SOURCE_VERSION:=56f2c3531066e461be8911b488b54193fb6b88e0
+#PKG_SOURCE_VERSION:=a1a22f8ee37d45218fdd4e8d4112e114b6529f31
+#PKG_SOURCE_VERSION:=497d9fbf202880009fb22b8c1475f4868d9a2198
+#PKG_MIRROR_HASH:=d200bf556842b0c91da53ec3a514f8c80c39e7e9b6b7f8c72bbef0275252c233
 
 PKG_LICENSE:=BSD-2-Clause-Patent
 PKG_LICENSE_FILES:=LICENSE
@@ -22,15 +40,15 @@ PKG_LICENSE_FILES:=LICENSE
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
-CMAKE_OPTIONS += -DOPENWRT=TRUE
+CMAKE_OPTIONS += -DOPENWRT=TRUE -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy'
 
 define Package/prplmesh
   SECTION:=net
   CATEGORY:=Network
   TITLE:=An implementation of the Wi-Fi Alliance Multi-AP Specification
-  URL:=https://github.com/prplfoundation/prplMesh
+  URL:=https://gitlab.com/prpl-foundation/prplmesh/prplMesh.git
   MAINTAINER:=Arnout Vandecappelle (Essensium/Mind) <arnout@mind.be>
-  DEPENDS:=+ebtables +libnl-core +libnl-genl +libopenssl +libpthread +librt +libubox +libubus +rpcd +rpcd-mod-iwinfo @!BIG_ENDIAN
+  DEPENDS:=+ebtables +libnl-core +libnl-genl +libopenssl +libpthread +librt +libubox +libubus +rpcd +rpcd-mod-iwinfo +libstdcpp +libnl +libnl-route +libnl-core@!BIG_ENDIAN
 endef
 
 define Package/prplmesh/description
@@ -42,10 +60,13 @@ endef
 
 
 define Package/prplmesh/install
-	$(INSTALL_DIR) $(1)/usr/sbin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/prplmesh $(1)/usr/sbin/
+	$(INSTALL_DIR)  $(1)/usr/sbin/
+	$(INSTALL_BIN)  $(PKG_BUILD_DIR)/out/bin/* $(1)/usr/sbin/
+	$(INSTALL_DIR)  $(1)/usr/lib/
+	$(INSTALL_BIN)  $(PKG_BUILD_DIR)/out/lib/* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/etc/config/
 	$(INSTALL_DATA) ./files/prplmesh.config $(1)/etc/config/prplmesh
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/out/config/* $(1)/etc/config/
 	$(INSTALL_DIR) $(1)/etc/init.d/
 	$(INSTALL_BIN) ./files/prplmesh.init $(1)/etc/init.d/prplmesh
 endef
