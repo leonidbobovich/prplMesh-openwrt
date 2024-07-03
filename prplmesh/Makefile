@@ -23,8 +23,8 @@ PKG_SOURCE_PROTO:=git
 
 #PKG_SOURCE_URL:=/home/ubuntu/prplMesh.leonid/.git
 #PKG_SOURCE_VERSION:=d7f8039a666423fcda3cb690d8c7d1e0668b852c
-PKG_SOURCE_URL:=/home/ubuntu/prplMesh/.git
-PKG_SOURCE_VERSION:=27a53e40d24f7ba6f3c9b6841e0c3de34594e4c4
+PKG_SOURCE_URL:=git@gitlab.com:leonidbobovich/prplMesh.git
+PKG_SOURCE_VERSION:=5fd89dbb36d7bad868f7a0c0ca27a6b481ca8570
 
 #PKG_SOURCE_DATE:=2024-02-21
 #PKG_SOURCE_VERSION:=
