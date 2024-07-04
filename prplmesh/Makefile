@@ -24,7 +24,7 @@ PKG_SOURCE_PROTO:=git
 #PKG_SOURCE_URL:=/home/ubuntu/prplMesh.leonid/.git
 #PKG_SOURCE_VERSION:=d7f8039a666423fcda3cb690d8c7d1e0668b852c
 PKG_SOURCE_URL:=git@gitlab.com:leonidbobovich/prplMesh.git
-PKG_SOURCE_VERSION:=4003e108b45e3170924d87c284bb559e0f2751f6
+PKG_SOURCE_VERSION:=9527573c40de7e897743ad1ab93b36eda05de081
 
 #PKG_SOURCE_DATE:=2024-02-21
 #PKG_SOURCE_VERSION:=
@@ -40,7 +40,8 @@ PKG_LICENSE_FILES:=LICENSE
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
-CMAKE_OPTIONS += -DOPENWRT=TRUE -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy'
+#CMAKE_OPTIONS += -DBEEROCKS_OPENWRT -DOPENWRT=TRUE -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy'
+CMAKE_OPTIONS += -DBEEROCKS_OPENWRT -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy'
 
 define Package/prplmesh
   SECTION:=net
