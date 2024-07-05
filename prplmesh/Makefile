@@ -27,9 +27,9 @@ PKG_LICENSE_FILES:=LICENSE
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
+set(ENV{CMAKE_INSTALL_MODE} REL_SYMLINK)
 #CMAKE_OPTIONS += -DBEEROCKS_OPENWRT -DOPENWRT=TRUE -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy'
-CMAKE_OPTIONS += -DBEEROCKS_OPENWRT=1 -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy'
-CMAKE_INSTALL_MODE=REL_SYMLINK
+CMAKE_OPTIONS += -DCMAKE_INSTALL_MODE=REL_SYMLINK -DBEEROCKS_OPENWRT=1 -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy -Wno-psabi' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy -Wno-psabi'
 
 define Package/prplmesh
   SECTION:=net
