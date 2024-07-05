@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=prplmesh
-PKG_VERSION:=4.2.2
-PKG_RELEASE:=2
+PKG_VERSION:=4.2.4
+PKG_RELEASE:=4
 PKG_BASE_NAME:=prplmesh
 
 PKG_SOURCE_PROTO:=git
@@ -29,6 +29,7 @@ include $(INCLUDE_DIR)/cmake.mk
 
 #CMAKE_OPTIONS += -DBEEROCKS_OPENWRT -DOPENWRT=TRUE -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy'
 CMAKE_OPTIONS += -DBEEROCKS_OPENWRT=1 -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy'
+CMAKE_INSTALL_MODE=REL_SYMLINK
 
 define Package/prplmesh
   SECTION:=net
