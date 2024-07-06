@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=prplmesh
-PKG_VERSION:=4.2.2
+PKG_VERSION:=4.2.4
 PKG_RELEASE:=0
 PKG_BASE_NAME:=prplmesh
 
