@@ -26,7 +26,8 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 #CMAKE_OPTIONS += -DBEEROCKS_OPENWRT -DOPENWRT=TRUE -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy'
-CMAKE_OPTIONS += -DCMAKE_INSTALL_MODE=REL_SYMLINK -DBEEROCKS_OPENWRT=1 -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy -Wno-psabi' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy -Wno-psabi'
+#CMAKE_OPTIONS += -DCMAKE_INSTALL_MODE=REL_SYMLINK -DBEEROCKS_OPENWRT=1 -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy -Wno-psabi' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy -Wno-psabi'
+CMAKE_OPTIONS += -DCMAKE_INSTALL_MODE=REL_SYMLINK -DCMAKE_C_FLAGS='-Wall' -DCMAKE_CXX_FLAGS='-Wall'
 
 define Package/prplmesh
   SECTION:=net
