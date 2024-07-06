@@ -46,13 +46,10 @@ endef
 
 
 define Package/prplmesh/install
-	$(INSTALL_DIR)  $(1)/usr/sbin/
-	$(INSTALL_BIN)  $(PKG_BUILD_DIR)/out/bin/* $(1)/usr/sbin/
-	$(INSTALL_DIR)  $(1)/usr/lib/
-	$(INSTALL_BIN)  $(PKG_BUILD_DIR)/out/lib/* $(1)/usr/lib/
+	$(INSTALL_DIR)  $(1)/usr/
+	$(INSTALL_BIN)  $(PKG_BUILD_DIR)/out/* $(1)/usr/
 	$(INSTALL_DIR)  $(1)/etc/config/
 	$(INSTALL_DATA) ./files/prplmesh.config $(1)/etc/config/prplmesh
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/out/config/* $(1)/etc/config/
 	$(INSTALL_DIR)  $(1)/etc/init.d/
 	$(INSTALL_BIN)  ./files/prplmesh.init $(1)/etc/init.d/prplmesh
 endef
