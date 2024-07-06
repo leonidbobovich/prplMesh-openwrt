@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=prplmesh
-PKG_VERSION:=4.2.4
-PKG_RELEASE:=4
+PKG_VERSION:=openssl
+PKG_RELEASE:=4.2.4
 PKG_BASE_NAME:=prplmesh
 
 PKG_SOURCE_PROTO:=git
