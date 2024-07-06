@@ -13,11 +13,8 @@ PKG_RELEASE:=4
 PKG_BASE_NAME:=prplmesh
 
 PKG_SOURCE_PROTO:=git
-#PKG_SOURCE_URL:=https://github.com/prplfoundation/prplMesh.git
-#PKG_SOURCE_URL:=/home/ubuntu/prplMesh.leonid/.git
-#PKG_SOURCE_VERSION:=d7f8039a666423fcda3cb690d8c7d1e0668b852c
 PKG_SOURCE_URL:=git@gitlab.com:leonidbobovich/prplMesh.git
-#PKG_SOURCE_VERSION:=56dc73e23e53dd11745d5f2c2405cbd854c12b53
+#PKG_SOURCE_VERSION:=d7f8039a666423fcda3cb690d8c7d1e0668b852c
 PKG_SOURCE_VERSION:=HEAD
 #PKG_SOURCE_DATE:=2024-02-21
 #PKG_MIRROR_HASH:=d200bf556842b0c91da53ec3a514f8c80c39e7e9b6b7f8c72bbef0275252c233
@@ -35,8 +32,8 @@ define Package/prplmesh
   SECTION:=net
   CATEGORY:=Network
   TITLE:=An implementation of the Wi-Fi Alliance Multi-AP Specification
-  URL:=https://gitlab.com/prpl-foundation/prplmesh/prplMesh.git
-  MAINTAINER:=Arnout Vandecappelle (Essensium/Mind) <arnout@mind.be>
+  URL:=https://github.com/leonidbobovich/prplMesh-openwrt.git
+  MAINTAINER:= Leonid Bobovich <leonidbobovich@gmail.com>
   DEPENDS:=+ebtables +libnl-core +libnl-genl +libopenssl +libpthread +librt +libubox +libubus +rpcd +rpcd-mod-iwinfo +libstdcpp +libnl +libnl-route
 endef
 
@@ -53,11 +50,11 @@ define Package/prplmesh/install
 	$(INSTALL_BIN)  $(PKG_BUILD_DIR)/out/bin/* $(1)/usr/sbin/
 	$(INSTALL_DIR)  $(1)/usr/lib/
 	$(INSTALL_BIN)  $(PKG_BUILD_DIR)/out/lib/* $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)/etc/config/
+	$(INSTALL_DIR)  $(1)/etc/config/
 	$(INSTALL_DATA) ./files/prplmesh.config $(1)/etc/config/prplmesh
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/out/config/* $(1)/etc/config/
-	$(INSTALL_DIR) $(1)/etc/init.d/
-	$(INSTALL_BIN) ./files/prplmesh.init $(1)/etc/init.d/prplmesh
+	$(INSTALL_DIR)  $(1)/etc/init.d/
+	$(INSTALL_BIN)  ./files/prplmesh.init $(1)/etc/init.d/prplmesh
 endef
 
 $(eval $(call BuildPackage,prplmesh))
