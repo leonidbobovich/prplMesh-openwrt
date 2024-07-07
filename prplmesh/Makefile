@@ -50,8 +50,8 @@ endef
 #	$(INSTALL_LIB)  $(PKG_BUILD_DIR)/out/lib $(1)/usr/lib
 #
 define Package/prplmesh/install
-#	$(INSTALL_DIR)  $(1)/usr
-#	$(CP)  $(PKG_BUILD_DIR)/out $(1)/usr
+	$(INSTALL_DIR)  $(1)/usr
+	$(CP)  $(PKG_BUILD_DIR)/out $(1)/usr
 	$(INSTALL_DIR)  $(1)/etc/config/
 	$(INSTALL_DATA) ./files/prplmesh.config $(1)/etc/config/prplmesh
 	$(INSTALL_DIR)  $(1)/etc/init.d/
