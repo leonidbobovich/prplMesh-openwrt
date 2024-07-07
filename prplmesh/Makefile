@@ -27,7 +27,7 @@ include $(INCLUDE_DIR)/cmake.mk
 
 #CMAKE_OPTIONS += -DBEEROCKS_OPENWRT -DOPENWRT=TRUE -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy'
 #CMAKE_OPTIONS += -DCMAKE_INSTALL_MODE=REL_SYMLINK -DBEEROCKS_OPENWRT=1 -DCMAKE_C_FLAGS='-Wno-deprecated -Wno-deprecated-copy -Wno-psabi' -DCMAKE_CXX_FLAGS='-Wno-deprecated -Wno-deprecated-copy -Wno-psabi'
-CMAKE_OPTIONS += -DCMAKE_INSTALL_MODE=REL_SYMLINK -DCMAKE_C_FLAGS='-Wall' -DCMAKE_CXX_FLAGS='-Wall'
+CMAKE_OPTIONS += -DCMAKE_INSTALL_MODE=REL_SYMLINK -DCMAKE_C_FLAGS='-Wall' -DCMAKE_CXX_FLAGS='-Wall' -DPRPLMESH_VERSION=${PKG_VERSION}-${PKG_RELEASE}
 
 define Package/prplmesh
   SECTION:=net
@@ -45,10 +45,6 @@ define Package/prplmesh/description
  WFA Multi-AP protocol.
 endef
 
-
-#	$(INSTALL_DIR)  $(1)/usr/bin
-#	$(INSTALL_LIB)  $(PKG_BUILD_DIR)/out/lib $(1)/usr/lib
-#
 define Package/prplmesh/install
 	$(INSTALL_DIR)  $(1)/usr
 	$(CP)  $(PKG_BUILD_DIR)/out/* $(1)/usr
